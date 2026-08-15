@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <tittle>KOMAIPlinks</tittle>
+        <style>
+            a {text-decoration: none;}
+         ul {border: 10px solod yellow;}
+            </style>
+    </head>
+
+    <body>
+        <h1><a href="ExamForm.html" onclick="allowExamForm()"><span style="color: black; text-decoration: none;">T</span></a>he Links</h1>
+        
+        <script>
+            function allowExamForm() {
+                sessionStorage.setItem("allowedExamForm", "yes");
+            }
+        </script>
+        <div>
+            <table>
+            <ul>
+                <li><a href="google.com">Home</a></li>
+                <li><a href="google.com">Hobbies</a></li>
+                <li><a href="google.com">How To Program</a></li>
+                <li><a href="google.com">Click Here and See Magic</a></li>
+                <li><a href="google.com">The Secret Door</a></li>
+            </ul>
+            </table>
+        </div>
+    </body>
+</html>
