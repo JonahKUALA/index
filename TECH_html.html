@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wawin National School of Excellence - Student Registration 2026</title>
+    <link rel="stylesheet" href="CSS.css">
+</head>
+<body>
+
+<div class="registration-form">
+    <h1>Wawin National School of Excellence <br>School Registration Form-2026</h1>
+    <p class="subtitle">Select at least six (6) requirements to qualify.</p>
+
+    <div id="logic-container">
+        <div class="rule-item"><input type="checkbox" id="P"><label for="P">P: Form Submitted</label></div>
+        <div class="rule-item"><input type="checkbox" id="Q"><label for="Q">Q: Fees Paid</label></div>
+        <div class="rule-item"><input type="checkbox" id="R"><label for="R">R: Academic Documents Submitted</label></div>
+        <div class="rule-item"><input type="checkbox" id="S"><label for="S">S: Passed Entrance Exam</label></div>
+        <div class="rule-item"><input type="checkbox" id="T"><label for="T">T: Eligible for Admission</label></div>
+        <div class="rule-item"><input type="checkbox" id="U"><label for="U">U: Applied Before Deadline</label></div>
+        <div class="rule-item"><input type="checkbox" id="V"><label for="V">V: Officially Registered</label></div>
+        <div class="rule-item"><input type="checkbox" id="W"><label for="W">W: Student ID Received</label></div>
+        <div class="rule-item"><input type="checkbox" id="X"><label for="X">X: Class Assigned</label></div>
+        <div class="rule-item"><input type="checkbox" id="Y"><label for="Y">Y: Returning Student Status</label></div>
+    </div>
+
+    <button onclick="processRegistration()">Verify Registration Status</button>
+
+    <div id="statusDisplay"></div>
+</div>
+
+<script>
+    function processRegistration() {
+        // 1. Collect the state of all 10 logical rules [cite: 16]
+        const logicRules = [
+            document.getElementById('P').checked,
+            document.getElementById('Q').checked,
+            document.getElementById('R').checked,
+            document.getElementById('S').checked,
+            document.getElementById('T').checked,
+            document.getElementById('U').checked,
+            document.getElementById('V').checked,
+            document.getElementById('W').checked,
+            document.getElementById('X').checked,
+            document.getElementById('Y').checked
+        ];
+
+        // 2. Count how many requirements are met
+        let requirementsMetCount = 0;
+        for (let ruleMet of logicRules) {
+            if (ruleMet === true) {
+                requirementsMetCount++;
+            }
+        }
+
+        // 3. Evaluate Condition: Must be ABOVE five (6 or more)
+        const display = document.getElementById('statusDisplay');
+        display.style.display = "block";
+
+        if (requirementsMetCount > 5) {
+            // Qualified if more than 5 requirements are checked
+            display.className = "successful";
+            display.innerHTML = "STATUS: REGISTERED (Qualified with " + requirementsMetCount + "/10 requirements)";
+        } else {
+            // Unqualified if 5 or fewer are checked
+            display.className = "pending";
+            display.innerHTML = "STATUS: NOT REGISTERED (Only " + requirementsMetCount + " requirements met. You need more than 5 to qualify.)";
+        }
+    }
+</script>
+
+</body>
+</html>
